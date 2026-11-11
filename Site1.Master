@@ -1,0 +1,305 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ProjectApp.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VERDELLE</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <style type="text/css">
+
+        #registerMenu {
+    display: none;
+}
+
+#registerMenu.show_register {
+    display: block;
+}
+
+    /* Navigation spacing */
+    .custom_nav-container .navbar-nav {
+        align-items: center;
+        gap: 8px;
+    }
+
+    .custom_nav-container .navbar-nav .nav-link {
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px 15px;
+    }
+
+    .custom_nav-container .navbar-nav .nav-link:hover {
+        color: #81b214;
+    }
+
+    /* Dropdown menu */
+    .custom_nav-container .dropdown-menu {
+        min-width: 190px;
+        padding: 8px 0;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .custom_nav-container .dropdown-item {
+        padding: 11px 16px;
+        color: #444;
+        font-size: 14px;
+    }
+
+    .custom_nav-container .dropdown-item:hover {
+        background-color: #f3f7eb;
+        color: #81b214;
+    }
+
+    /* Login button */
+    .custom_nav-container .navbar-nav .verdelle-login {
+        background-color: #81b214;
+        color: white;
+        padding: 11px 25px;
+        border-radius: 25px;
+        margin: 0 5px;
+    }
+
+    .custom_nav-container .navbar-nav .verdelle-login:hover {
+        background-color: #638b0e;
+        color: white;
+    }
+
+    <style type="text/css">
+
+    #registerMenu,
+    #dashboardMenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 190px;
+        background: white;
+        border: 1px solid #eeeeee;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        padding: 8px 0;
+        z-index: 9999;
+    }
+
+    #registerMenu.show_register,
+    #dashboardMenu.show_dashboard {
+        display: block;
+    }
+
+    #registerMenu a,
+    #dashboardMenu a {
+        display: block;
+        padding: 12px 16px;
+        color: #333333;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    #registerMenu a:hover,
+    #dashboardMenu a:hover {
+        background-color: #f3f7eb;
+        color: #81b214;
+    }
+
+    #registerDropdown,
+    #dashboardDropdown {
+        cursor: pointer;
+    }
+
+    .navbar-nav > .dropdown {
+        position: relative;
+    }
+
+</style>  
+</head>
+   <asp:ContentPlaceHolder ID="head" runat="server">
+</asp:ContentPlaceHolder>
+
+<body>
+    <form id="form1" runat="server">
+         <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+     <div class="hero-bg">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="Home.aspx">
+            <span>
+              VERDELLE
+            </span>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="Home.aspx">HOME</a>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link " href="ViewAllProducts.aspx">PLANTS </a>
+    </li>
+
+    <!-- Register Dropdown -->
+<li class="nav-item dropdown">
+
+    <a class="nav-link dropdown-toggle"
+       href="javascript:void(0);"
+       id="registerDropdown"
+       role="button"
+       aria-haspopup="true"
+       aria-expanded="false">
+        REGISTER
+    </a>
+
+    <div class="dropdown-menu" id="registerMenu">
+
+        <a class="dropdown-item" href="AdminRegistration.aspx">
+            Admin Registration
+        </a>
+
+        <a class="dropdown-item" href="UserRegistration.aspx">
+            User Registration
+        </a>
+
+    </div>
+
+</li>
+
+    <!-- Login Button -->
+    <li class="nav-item">
+        <a class="nav-link verdelle-login" href="Login.aspx">LOGIN</a>
+    </li>
+
+   <!-- Dashboard Dropdown -->
+<li class="nav-item dropdown">
+
+    <a class="nav-link"
+       href="javascript:void(0);"
+       id="dashboardDropdown"
+       aria-expanded="false">
+        DASHBOARD ▼
+    </a>
+
+    <div class="dropdown-menu" id="dashboardMenu">
+
+        <a class="dropdown-item" href="AdminHome.aspx">
+            Admin Home
+        </a>
+
+        <a class="dropdown-item" href="UserHome.aspx">
+            User Home
+        </a>
+
+    </div>
+
+</li>
+
+</ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+   
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+</asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <!-- end header section -->
+    <!-- footer section -->
+ 
+  </div>
+
+            
+        </div>
+    </form>
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            function setupDropdown(buttonId, menuId, openClass) {
+
+                var button = document.getElementById(buttonId);
+                var menu = document.getElementById(menuId);
+
+                if (!button || !menu) {
+                    return;
+                }
+
+                button.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    var wasOpen = menu.classList.contains(openClass);
+
+                    // Close both dropdowns
+                    document.getElementById("registerMenu")
+                        .classList.remove("show_register");
+
+                    document.getElementById("dashboardMenu")
+                        .classList.remove("show_dashboard");
+
+                    document.getElementById("registerDropdown")
+                        .setAttribute("aria-expanded", "false");
+
+                    document.getElementById("dashboardDropdown")
+                        .setAttribute("aria-expanded", "false");
+
+                    // Toggle the clicked dropdown
+                    if (!wasOpen) {
+                        menu.classList.add(openClass);
+                        button.setAttribute("aria-expanded", "true");
+                    }
+
+                });
+            }
+
+            setupDropdown(
+                "registerDropdown",
+                "registerMenu",
+                "show_register"
+            );
+
+            setupDropdown(
+                "dashboardDropdown",
+                "dashboardMenu",
+                "show_dashboard"
+            );
+
+            document.addEventListener("click", function () {
+
+                document.getElementById("registerMenu")
+                    .classList.remove("show_register");
+
+                document.getElementById("dashboardMenu")
+                    .classList.remove("show_dashboard");
+
+                document.getElementById("registerDropdown")
+                    .setAttribute("aria-expanded", "false");
+
+                document.getElementById("dashboardDropdown")
+                    .setAttribute("aria-expanded", "false");
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>
